@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->text('max_people');
             $table->string('size');
             $table->string('parking');
             $table->string('payment_method');

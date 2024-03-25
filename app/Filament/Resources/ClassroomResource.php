@@ -21,17 +21,18 @@ class ClassroomResource extends Resource
 
     public static function form(Form $form): Form
     {
-        return $form
+        return $form->columns(2)
             ->schema([
                 Forms\Components\Textarea::make('name'),
-                Forms\Components\Textarea::make('size'),
-                Forms\Components\MarkdownEditor::make('description'),
-                Forms\Components\FileUpload::make('image')->image()->imageEditor(),
+                Forms\Components\Textarea::make('payment_method'),
+                Forms\Components\TextInput::make('max_people')->numeric(),
+                Forms\Components\TextInput::make('size')->numeric(),
                 Forms\Components\Select::make('parking')->options([
                     'Sí' => 'Sí',
                     'No' => 'No',
-                ]),
-                Forms\Components\Textarea::make('payment_method'),
+                ])->columnSpan(2),
+                Forms\Components\MarkdownEditor::make('description'),
+                Forms\Components\FileUpload::make('image')->image()->imageEditor(),
             ]);
     }
 
@@ -41,7 +42,8 @@ class ClassroomResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('description')->wrap(),
-                Tables\Columns\TextColumn::make('size'),
+                Tables\Columns\TextColumn::make('max_people'),
+                Tables\Columns\TextColumn::make('size')->suffix(' m²'),
                 Tables\Columns\TextColumn::make('parking'),
                 Tables\Columns\TextColumn::make('payment_method'),
                 Tables\Columns\ImageColumn::make('image')->width(200)->height(120),

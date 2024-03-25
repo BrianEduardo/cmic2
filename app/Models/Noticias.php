@@ -15,6 +15,7 @@ class Noticias extends Model
         'tituloNoticia',
         'contenidoNoticia',
         'fotoNoticia',
+        'habilitado',
     ];
 
     public function noticiaCategorias()

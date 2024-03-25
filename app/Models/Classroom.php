@@ -12,6 +12,7 @@ class Classroom extends Model
     protected $fillable = [
         'name',
         'description',
+        'max_people',
         'size',
         'parking',
         'payment_method',

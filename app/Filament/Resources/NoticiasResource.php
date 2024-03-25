@@ -28,7 +28,9 @@ class NoticiasResource extends Resource
                 Forms\Components\Textarea::make('contenidoNoticia'),
                 Forms\Components\FileUpload::make('fotoNoticia')->image()->imageEditor(),
                 Select::make('new_id')
-                    ->relationship(name: 'noticiaCategorias', titleAttribute: 'name')->multiple()->preload()
+                    ->relationship(name: 'noticiaCategorias', titleAttribute: 'name')->multiple()->preload(),
+                    Forms\Components\Toggle::make('habilitado')
+                
             ]);
     }
 
@@ -38,6 +40,7 @@ class NoticiasResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('tituloNoticia'),
                 Tables\Columns\TextColumn::make('contenidoNoticia'),
+                Tables\Columns\ToggleColumn::make('habilitado'),
                 Tables\Columns\ImageColumn::make('fotoNoticia')->width(200)->height(120),
                 Tables\Columns\TextColumn::make('noticiaCategorias.name')->badge(),
                 

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('tituloNoticia');
             $table->string('contenidoNoticia');
+            $table->boolean('habilitado')->default(true);
             $table->string('fotoNoticia');
 
         });
